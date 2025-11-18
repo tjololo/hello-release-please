@@ -15,7 +15,8 @@
       "bump-patch-for-minor-pre-major": false,
       "draft": false,
       "prerelease": false,
-      "component": "app-one"
+      "component": "app-one",
+      "include-component-in-tag": true
     },
     "apps/app-two": {
       "changelog-path": "apps/app-two/CHANGELOG.md",
@@ -24,7 +25,9 @@
       "bump-patch-for-minor-pre-major": false,
       "draft": false,
       "prerelease": false,
-      "component": "app-two"
+      "component": "app-two",
+      "include-component-in-tag": true,
+      "component-no-space": true
     },
     "apps/app-three": {
       "changelog-path": "apps/app-three/CHANGELOG.md",
