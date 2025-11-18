@@ -1,6 +1,6 @@
 {
-  ".": "0.0.0",
+  ".": "1.0.0",
   "apps/app-one": "1.0.0",
   "apps/app-two": "0.0.0",
-  "apps/app-three": "0.0.0"
+  "apps/app-three": "1.0.0"
 }
