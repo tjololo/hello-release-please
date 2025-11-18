@@ -9,7 +9,7 @@
       "prerelease": false
     },
     "apps/app-one": {
-      "changelog-path": "apps/app-one/CHANGELOG.md",
+      "changelog-path": "CHANGELOG.md",
       "release-type": "simple",
       "bump-minor-pre-major": false,
       "bump-patch-for-minor-pre-major": false,
@@ -20,7 +20,7 @@
       "separate-pull-requests": true
     },
     "apps/app-two": {
-      "changelog-path": "apps/app-two/CHANGELOG.md",
+      "changelog-path": "CHANGELOG.md",
       "release-type": "simple",
       "bump-minor-pre-major": false,
       "bump-patch-for-minor-pre-major": false,
@@ -32,7 +32,7 @@
       "separate-pull-requests": true
     },
     "apps/app-three": {
-      "changelog-path": "apps/app-three/CHANGELOG.md",
+      "changelog-path": "CHANGELOG.md",
       "release-type": "simple",
       "bump-minor-pre-major": false,
       "bump-patch-for-minor-pre-major": false,
