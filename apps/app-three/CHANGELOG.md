@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/tjololo/hello-release-please/compare/app-three-v1.2.0...app-three-v1.3.0) (2025-11-20)
+
+
+### Features
+
+* some feat ([e85bf03](https://github.com/tjololo/hello-release-please/commit/e85bf03eb77d6efd0d4ed9c6ecb6db84174bce33))
+
 ## [1.2.0](https://github.com/tjololo/hello-release-please/compare/app-three-v1.1.0...app-three-v1.2.0) (2025-11-20)
 
 
