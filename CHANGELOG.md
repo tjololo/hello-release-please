@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.1.0](https://github.com/tjololo/hello-release-please/compare/v1.0.0...v1.1.0) (2025-11-18)
+
+
+### Features
+
+* update app three ([5a45d5c](https://github.com/tjololo/hello-release-please/commit/5a45d5ce9f38cd83ef6d714b325455bdb2227137))
+
+
+### Bug Fixes
+
+* app-two ([714ad9a](https://github.com/tjololo/hello-release-please/commit/714ad9a592afe508bdb17fd8101e26a6975ac93b))
+* update app one ([73c2223](https://github.com/tjololo/hello-release-please/commit/73c22237781c9dca0fe2834d4766558b52e1d408))
+
 ## 1.0.0 (2025-11-18)
 
 
