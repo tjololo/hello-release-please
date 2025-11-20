@@ -1,4 +1,5 @@
 {
+  ".": "1.1.0",
   "apps/app-one": "2.0.0",
   "apps/app-two": "1.0.2",
   "apps/app-three": "1.2.0"
