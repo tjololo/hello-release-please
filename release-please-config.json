@@ -1,0 +1,42 @@
+{
+  "packages": {
+    "pkg/one": {
+      "changelog-path": "CHANGELOG.md",
+      "release-type": "simple",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": false,
+      "component": "app-one",
+      "include-component-in-tag": true,
+      "separate-pull-requests": true,
+      
+    },
+    "pkg/two": {
+      "changelog-path": "CHANGELOG.md",
+      "release-type": "simple",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": false,
+      "component": "app-two",
+      "include-component-in-tag": true,
+      "component-no-space": true,
+      "separate-pull-requests": true
+    },
+    "pkg/three": {
+      "changelog-path": "CHANGELOG.md",
+      "release-type": "simple",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": false,
+      "component": "app-three",
+      "include-component-in-tag": true,
+      "component-no-space": true,
+      "separate-pull-requests": true
+    }
+  },
+  "tag-separator": "-",
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
+}
