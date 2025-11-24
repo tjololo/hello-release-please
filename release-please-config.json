@@ -18,8 +18,7 @@
       "draft": false,
       "prerelease": false,
       "component": "app-two",
-      "include-component-in-tag": true,
-      "component-no-space": true
+      "include-component-in-tag": true
     },
     "pkg/three": {
       "changelog-path": "CHANGELOG.md",
@@ -29,8 +28,7 @@
       "draft": false,
       "prerelease": false,
       "component": "app-three",
-      "include-component-in-tag": true,
-      "component-no-space": true
+      "include-component-in-tag": true
     }
   },
   "separate-pull-requests": true,
