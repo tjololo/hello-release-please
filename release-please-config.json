@@ -1,10 +1,5 @@
 {
   "packages": {
-    ".": {
-        "changelog-path": "CHANGELOG.md",
-        "exclude-paths": ["./"],
-        "release-type": "simple"
-    },
     "pkg/one": {
       "changelog-path": "CHANGELOG.md",
       "release-type": "simple",
