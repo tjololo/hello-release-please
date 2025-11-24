@@ -9,8 +9,7 @@
       "prerelease": false,
       "component": "app-one",
       "include-component-in-tag": true,
-      "separate-pull-requests": true,
-      
+      "separate-pull-requests": true
     },
     "pkg/two": {
       "changelog-path": "CHANGELOG.md",
