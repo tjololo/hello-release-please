@@ -15,16 +15,10 @@ jobs:
     - uses: actions/github-script@v7
       with:
         script: |
-          const array = [
-            {
-              a: "a1",
-              b: "b1"
-            },
-            {
-              a: "a2",
-              b: "b2"
-            }
-          ];
+          const array = [];
+          array.push(JSON.stringify({a:"a1",b:"b1"}))
+          array.push(JSON.stringify({a:"a2",b:"b2"}))
+          array.push(JSON.stringify({a:"a3",b:"b3"}))
           return JSON.stringify(array);
       id: matrix
     
