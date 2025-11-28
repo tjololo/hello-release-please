@@ -26,11 +26,14 @@ jobs:
             }
           ];
           return JSON.stringify(array);
-      id: matrix
+      id: matrixs
     
-
   call-workflow:
+    needs: matrixs
     uses: ./.github/workflows/post-simple-workflow.yaml
+    strategy:
+      matrix: 
+        result: ${{ fromJson(needs.matrixs.outputs.matrix) }}
     with:
       tag_name: "demo"
       release_url: "demo"
