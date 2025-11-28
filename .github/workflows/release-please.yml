@@ -40,19 +40,22 @@ jobs:
         with:
           script: |
             const release_info = ${{ needs.release-please.outputs.release_info }};
+            console.log(JSON.stringify(release_info));
             const paths = JSON.parse(release_info.paths_released);
+            console.log(JSON.stringify(paths));
             const releases = [];
             for (const path of paths) {
-              const path_ = path.replace(/\//g, '_');
+              console.log(path);
               const release = {
-                tag_name: release_info[path_ + '_tag_name'],
-                release_url: release_info[path_ + '_release_url'],
-                sha: release_info[path_ + '_sha']
+                tag_name: release_info[path + '_tag_name'],
+                release_url: release_info[path + '_release_url'],
+                sha: release_info[path + '_sha']
               };
               if (release.tag_name && release.release_url && release.sha) {
                 releases.push(release);
               }
             }
+            console.log(JSON.stringify(releases));
             return JSON.stringify(releases);
       - name: Log releases output
         run: echo "${{ steps.releases_map.outputs.result }}"
