@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/tjololo/hello-release-please/compare/app-three-v1.0.2...app-three-v1.0.3) (2025-11-28)
+
+
+### Bug Fixes
+
+* app one ([533b62c](https://github.com/tjololo/hello-release-please/commit/533b62ca92d06482f0ed58d9645d88600c66a1a3))
+
 ## [1.0.2](https://github.com/tjololo/hello-release-please/compare/app-three-v1.0.1...app-three-v1.0.2) (2025-11-28)
 
 
