@@ -1,0 +1,21 @@
+name: Test workflow call
+
+on:
+  workflow_call: 
+    inputs:
+      tag_name:
+        required: true
+        type: string
+      release_url:
+        required: true
+        type: string
+      release_sha:
+        required: true
+        type: string
+
+jobs:
+  print-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print inputs
+        run: echo ${{ github.event.inputs.tag_name }} ${{ github.event.inputs.release_url }} ${{ github.event.inputs.release_sha }}

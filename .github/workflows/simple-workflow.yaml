@@ -1,0 +1,37 @@
+name: Call post simple workflow
+
+on:
+  push:
+    branches:
+      - test-matrix
+
+jobs:
+  matrixs:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.matrix.outputs.result }}
+
+    steps:
+    - uses: actions/github-script@v7
+      with:
+        script: |
+          const array = [
+            {
+              a: "a1",
+              b: "b1"
+            },
+            {
+              a: "a2",
+              b: "b2"
+            }
+          ];
+          return JSON.stringify(array);
+      id: matrix
+    
+
+  call-workflow:
+    uses: ./.github/workflows/post-simple-workflow.yaml
+    with:
+      tag_name: "demo"
+      release_url: "demo"
+      release_sha: "demo"
