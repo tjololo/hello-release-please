@@ -62,13 +62,10 @@ jobs:
   post-release:
     needs: [release-please, prepare-matrix]
     if: ${{ needs.release-please.outputs.releases_created == 'true' }}
-    runs-on: ubuntu-latest
     strategy:
       matrix: ${{ fromJSON(needs.prepare-matrix.outputs.releases) }}
-    steps:
-      - name: Call post-release workflow
-        uses: ./.github/workflows/post-release-workflow.yaml
-        with:
-          tag_name: ${{ matrix.tag_name }}
-          release_url: ${{ matrix.release_url }}
-          release_sha: ${{ matrix.sha }}
+    uses: ./.github/workflows/post-release-workflow.yaml
+    with:
+      tag_name: ${{ matrix.tag_name }}
+      release_url: ${{ matrix.release_url }}
+      release_sha: ${{ matrix.sha }}
