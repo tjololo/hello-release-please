@@ -33,7 +33,7 @@ jobs:
     uses: ./.github/workflows/post-simple-workflow.yaml
     strategy:
       matrix: 
-        result: ${{ fromJson(needs.matrixs.outputs.matrix) }}
+        result: ${{ needs.matrixs.outputs.matrix }}
     with:
       tag_name: "demo"
       release_url: "demo"
