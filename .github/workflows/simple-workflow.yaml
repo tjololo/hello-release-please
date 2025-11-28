@@ -16,9 +16,9 @@ jobs:
       with:
         script: |
           const array = [];
-          array.push(JSON.stringify({a:"a1",b:"b1"}))
-          array.push(JSON.stringify({a:"a2",b:"b2"}))
-          array.push(JSON.stringify({a:"a3",b:"b3"}))
+          array.push({a:"a1",b:"b1"})
+          array.push({a:"a2",b:"b2"})
+          array.push({a:"a3",b:"b3"})
           const out = JSON.stringify({include: array})
           console.log(out)
           return out;
