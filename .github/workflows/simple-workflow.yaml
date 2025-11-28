@@ -19,7 +19,9 @@ jobs:
           array.push(JSON.stringify({a:"a1",b:"b1"}))
           array.push(JSON.stringify({a:"a2",b:"b2"}))
           array.push(JSON.stringify({a:"a3",b:"b3"}))
-          return JSON.stringify({include: array});
+          const out = JSON.stringify({include: array})
+          console.log(out)
+          return out;
       id: matrix
     
   call-workflow:
