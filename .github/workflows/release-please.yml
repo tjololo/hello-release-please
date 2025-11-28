@@ -47,9 +47,9 @@ jobs:
             for (const path of paths) {
               console.log(path);
               const release = {
-                tag_name: release_info[path + '_tag_name'],
-                release_url: release_info[path + '_release_url'],
-                sha: release_info[path + '_sha']
+                tag_name: release_info[path + '--tag_name'],
+                release_url: release_info[path + '--html_url'],
+                sha: release_info[path + '--sha']
               };
               if (release.tag_name && release.release_url && release.sha) {
                 releases.push(release);
