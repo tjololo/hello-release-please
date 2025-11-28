@@ -19,16 +19,15 @@ jobs:
           array.push(JSON.stringify({a:"a1",b:"b1"}))
           array.push(JSON.stringify({a:"a2",b:"b2"}))
           array.push(JSON.stringify({a:"a3",b:"b3"}))
-          return JSON.stringify(array);
+          return JSON.stringify({releases: array});
       id: matrix
     
   call-workflow:
     needs: matrixs
     strategy:
-      matrix:
-        package: ${{ fromJSON(needs.matrixs.outputs.matrix) }}
+      matrix: ${{ fromJSON(needs.matrixs.outputs.matrix) }}
     uses: ./.github/workflows/post-simple-workflow.yaml
     with:
-      tag_name: ${{ fromJSON(matrix.package).a }}
-      release_url: ${{ fromJSON(matrix.package).b }}
+      tag_name: ${{ fromJSON(matrix.releases).a }}
+      release_url: ${{ fromJSON(matrix.releases).b }}
       release_sha: "demo"
