@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/tjololo/hello-release-please/compare/app-one-v1.2.9...app-one-v1.3.0) (2025-11-28)
+
+
+### Features
+
+* trigger on tag ([b10fa86](https://github.com/tjololo/hello-release-please/commit/b10fa86ddfe78fdfe4fac6564c7d2fa70d999ede))
+
 ## [1.2.9](https://github.com/tjololo/hello-release-please/compare/app-one-v1.2.8...app-one-v1.2.9) (2025-11-28)
 
 
