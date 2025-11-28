@@ -40,15 +40,19 @@ jobs:
             const releasedPaths = release_info.paths_released;
             const releases = [];
             for (const releasedPath in releasedPaths) {
-              release = {};
-              release.path = releasedPath;
-              release.tag_name = release_info[releasedPath + '--tag_name'];
-              release.release_url = release_info[releasedPath + '--html_url'];
-              release.sha = release_info[releasedPath + '--sha'];
-              releases.push(release);
+              console.log(releasedPath);
+              const tag_name = release_info[releasedPath + '--tag_name'];
+              const release_url = release_info[releasedPath + '--html_url'];
+              const sha = release_info[releasedPath + '--sha'];
+              releases.push({
+                "tag_name": tag_name,
+                "release_url": release_url,
+                "sha": sha
+              });
             }
             console.log(JSON.stringify(releases));
-            core.setOutput('releases', JSON.stringify(releases));
+
+            core.setOutput('releases', releases);
 
   post-release:
     needs: [ release-please, prepare-matrix ]
