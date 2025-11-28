@@ -15,8 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       release_info: ${{ steps.release.outputs.releases_created && toJSON(steps.release.outputs) || '' }}
-      releases_created: ${{ steps.release.outputs.releases_created }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 #v4.4.0
         id: release
         with:
@@ -25,43 +27,46 @@ jobs:
           manifest-file: .release-please-manifest.json
 
   prepare-matrix:
-    needs: release-please
     runs-on: ubuntu-latest
-    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_info }}
     outputs:
-      releases: ${{ steps.releases_map.outputs.releases }}
+      releases: ${{ steps.releases_map.outputs.result }}
     steps:
-      - name: Prepare releases map
-        id: releases_map
+      - id: releases_map
+        name: Map release info to JSON array
         uses: actions/github-script@v7
         with:
           script: |
-            const release_info = ${{ fromJson(needs.release-please.outputs.release_info) }};
-            const releasedPaths = release_info.paths_released;
+            const release_info = ${{ needs.release-please.outputs.release_info }};
+            const paths = JSON.parse(release_info.paths_released);
             const releases = [];
-            for (const releasedPath in releasedPaths) {
-              console.log(releasedPath);
-              const tag_name = release_info[releasedPath + '--tag_name'];
-              const release_url = release_info[releasedPath + '--html_url'];
-              const sha = release_info[releasedPath + '--sha'];
-              releases.push({
-                "tag_name": tag_name,
-                "release_url": release_url,
-                "sha": sha
-              });
+            for (const path of paths) {
+              const path_ = path.replace(/\//g, '_');
+              const release = {
+                tag_name: release_info[path_ + '_tag_name'],
+                release_url: release_info[path_ + '_release_url'],
+                sha: release_info[path_ + '_sha']
+              };
+              if (release.tag_name && release.release_url && release.sha) {
+                releases.push(release);
+              }
             }
-            console.log(JSON.stringify(releases));
-
-            core.setOutput('releases', releases);
+            return JSON.stringify(releases);
+      - name: Log releases output
+        run: echo "${{ steps.releases_map.outputs.result }}"
 
   post-release:
-    needs: [ release-please, prepare-matrix ]
-    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
+    needs: prepare-matrix
+    if: ${{ needs.prepare-matrix.outputs.releases }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        path: ${{ fromJSON(needs.prepare-matrix.outputs.releases) }}
-    uses: ./.github/workflows/post-release-workflow.yaml
-    with:
-      tag_name: ${{ matrix.path.tag_name }}
-      release_url: ${{ matrix.path.release_url }}
-      release_sha: ${{ matrix.path.sha }}
+        release: ${{ fromJSON(needs.prepare-matrix.outputs.releases) }}
+    steps:
+      - name: Call post-release workflow
+        uses: ./.github/workflows/post-release-workflow.yaml
+        with:
+          tag_name: ${{ matrix.release.tag_name }}
+          release_url: ${{ matrix.release.release_url }}
+          release_sha: ${{ matrix.release.sha }}
