@@ -48,7 +48,7 @@ jobs:
               releases.push(release);
             }
             console.log(JSON.stringify(releases));
-            core.setOutput('releases', JSON.stringifyreleases));
+            core.setOutput('releases', JSON.stringify(releases));
 
   post-release:
     needs: [ release-please, prepare-matrix ]
