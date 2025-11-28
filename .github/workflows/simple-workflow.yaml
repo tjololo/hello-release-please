@@ -30,6 +30,6 @@ jobs:
       matrix: ${{ fromJSON(needs.matrixs.outputs.matrix) }}
     uses: ./.github/workflows/post-simple-workflow.yaml
     with:
-      tag_name: ${{ fromJSON(matrix.releases).a }}
-      release_url: ${{ fromJSON(matrix.releases).b }}
+      tag_name: ${{ matrix.a }}
+      release_url: ${{ matrix.b }}
       release_sha: "demo"
