@@ -26,7 +26,7 @@ jobs:
             }
           ];
           return JSON.stringify(array);
-      id: matrixs
+      id: matrix
     
   call-workflow:
     needs: matrixs
