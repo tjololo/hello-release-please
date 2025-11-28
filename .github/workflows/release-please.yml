@@ -55,8 +55,7 @@ jobs:
                 releases.push(release);
               }
             }
-            console.log(JSON.stringify(releases));
-            return JSON.stringify(releases);
+            return {include: releases};
       - name: Log releases output
         run: echo "${{ steps.releases_map.outputs.result }}"
 
@@ -65,12 +64,11 @@ jobs:
     if: ${{ needs.release-please.outputs.releases_created == 'true' }}
     runs-on: ubuntu-latest
     strategy:
-      matrix:
-        release: ${{ fromJSON(needs.prepare-matrix.outputs.releases) }}
+      matrix: ${{ fromJSON(needs.prepare-matrix.outputs.releases) }}
     steps:
       - name: Call post-release workflow
         uses: ./.github/workflows/post-release-workflow.yaml
         with:
-          tag_name: ${{ matrix.release.tag_name }}
-          release_url: ${{ matrix.release.release_url }}
-          release_sha: ${{ matrix.release.sha }}
+          tag_name: ${{ matrix.tag_name }}
+          release_url: ${{ matrix.release_url }}
+          release_sha: ${{ matrix.sha }}
