@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.7](https://github.com/tjololo/hello-release-please/compare/app-one-v1.2.6...app-one-v1.2.7) (2025-11-28)
+
+
+### Bug Fixes
+
+* add permission ([dfe0457](https://github.com/tjololo/hello-release-please/commit/dfe04579d32e470aacf7952c72629cb7b64c2234))
+
 ## [1.2.6](https://github.com/tjololo/hello-release-please/compare/app-one-v1.2.5...app-one-v1.2.6) (2025-11-28)
 
 
