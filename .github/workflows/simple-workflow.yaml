@@ -19,7 +19,7 @@ jobs:
           array.push({a:"a1",b:"b1"})
           array.push({a:"a2",b:"b2"})
           array.push({a:"a3",b:"b3"})
-          const out = JSON.stringify({include: array})
+          const out = {include: array}
           console.log(out)
           return out;
       id: matrix
