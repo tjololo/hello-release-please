@@ -24,33 +24,39 @@ jobs:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
 
-  post-release:
+  prepare-matrix:
     needs: release-please
-    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        path: ${{ fromJSON(fromJSON(needs.release-please.outputs.release_info).paths_released) }}
+    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
+    outputs:
+      releases: ${{ steps.releases_map.outputs.releases }}
     steps:
-      - name: Prepare workflow inputs
-        id: prep
+      - name: Prepare releases map
+        id: releases_map
         uses: actions/github-script@v7
         with:
           script: |
             const release_info = ${{ needs.release-please.outputs.release_info }};
-            const path = '${{ matrix.path }}';
-            const path_ = path.replace(/\//g, '_');
+            const releasedPaths = release_info.paths_released;
+            const releases = [];
+            for (const releasedPath in releasedPaths) {
+              release = {};
+              release.path = releasedPath;
+              release.tag_name = release_info[releasedPath + '--tag_name'];
+              release.release_url = release_info[releasedPath + '--html_url'];
+              release.sha = release_info[releasedPath + '--sha'];
+              releases.push(release);
+            }
+            core.setOutput('releases', releases);
 
-            const tag_name = release_info[path_ + '_tag_name'];
-            const release_url = release_info[path_ + '_release_url'];
-
-            core.setOutput('tag_name', tag_name);
-            core.setOutput('release_url', release_url);
-      - uses: actions/checkout@v6.0.0
-        with:
-          fetch-depth: 0
-      - name: Call post-release workflow
-        uses: ./.github/workflows/post-release-workflow.yaml
-        with:
-          tag_name: ${{ steps.prep.outputs.tag_name }}
-          release_url: ${{ steps.prep.outputs.release_url }}
+  post-release:
+    needs: [ release-please, prepare-matrix ]
+    if: ${{ needs.release-please.outputs.releases_created == 'true' }}
+    strategy:
+      matrix:
+        path: ${{ fromJSON(needs.prepare-matrix.outputs.releases) }}
+    uses: ./.github/workflows/post-release-workflow.yaml
+    with:
+      tag_name: ${{ matrix.path.tag_name }}
+      release_url: ${{ matrix.path.release_url }}
+      release_sha: ${{ matrix.path.sha }}
