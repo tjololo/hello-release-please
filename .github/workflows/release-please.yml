@@ -47,7 +47,8 @@ jobs:
               release.sha = release_info[releasedPath + '--sha'];
               releases.push(release);
             }
-            core.setOutput('releases', releases);
+            console.log(JSON.stringify(releases));
+            core.setOutput('releases', JSON.stringifyreleases));
 
   post-release:
     needs: [ release-please, prepare-matrix ]
