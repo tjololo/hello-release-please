@@ -24,11 +24,11 @@ jobs:
     
   call-workflow:
     needs: matrixs
-    uses: ./.github/workflows/post-simple-workflow.yaml
     strategy:
-      matrix: 
-        result: ${{ fromJson(needs.matrixs.outputs.matrix) }}
+      matrix:
+        package: ${{ fromJSON(needs.matrixs.outputs.matrix) }}
+    uses: ./.github/workflows/post-simple-workflow.yaml
     with:
-      tag_name: "demo"
-      release_url: "demo"
+      tag_name: ${{ fromJSON(matrix.package).a }}
+      release_url: ${{ fromJSON(matrix.package).b }}
       release_sha: "demo"
