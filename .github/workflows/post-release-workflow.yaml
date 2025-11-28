@@ -14,9 +14,6 @@ on:
       tag_name:
         required: true
         type: string
-      release_name:
-        required: true
-        type: string
       release_url:
         required: true
         type: string
@@ -40,12 +37,13 @@ jobs:
           script: |
             const tag = (github.event_name == 'release' ? github.event.release.tag_name : github.event.inputs.tag_name);
             const appName = tag.replace('app-', '');
-            const releaseName = (github.event_name == 'release' ? github.event.release.name : github.event.inputs.release_name);
+            const version = tag.match(/v\d+\.\d+\.\d+(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?:\+[0-9A-Za-z-]+)?$/)[0];
             const releaseUrl = (github.event_name == 'release' ? github.event.release.html_url : github.event.inputs.release_url);
             const releaseCreator = context.payload.release.author?.login;
-            const issueTitle = `Issue created after release of ${appName}`;
+            const issueTitle = `Issue created after release of ${appName} with version ${version}`;
             const issueBody = `A new release has been published.
-            - Release Name: ${releaseName}
+            - App Name: ${appName}
+            - Version: ${version}
             - Release Tag: ${tag}
             - Release URL: ${releaseUrl}
 
