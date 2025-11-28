@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       release_info: ${{ steps.release.outputs.releases_created && toJSON(steps.release.outputs) || '' }}
+      releases_created: ${{ steps.release.outputs.releases_created }}
     steps:
       - uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 #v4.4.0
         id: release
@@ -25,7 +26,7 @@ jobs:
 
   post-release:
     needs: release-please
-    if: ${{ needs.release-please.outputs.release_info }}
+    if: ${{ release-please.outputs.releases_created }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
