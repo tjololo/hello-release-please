@@ -36,7 +36,7 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const release_info = ${{ needs.release-please.outputs.release_info }};
+            const release_info = ${{ fromJson(needs.release-please.outputs.release_info) }};
             const releasedPaths = release_info.paths_released;
             const releases = [];
             for (const releasedPath in releasedPaths) {
