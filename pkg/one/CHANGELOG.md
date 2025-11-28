@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/tjololo/hello-release-please/compare/app-one-v1.0.0...app-one-v1.1.0) (2025-11-28)
+
+
+### Features
+
+* added an awesome feature ([c2d90cd](https://github.com/tjololo/hello-release-please/commit/c2d90cdd2ab43a3784ac4478e48446c4766e2013))
+
 ## 1.0.0 (2025-11-24)
 
 
