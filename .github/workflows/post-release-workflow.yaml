@@ -40,8 +40,8 @@ jobs:
           script: |
             console.log("Starting flow for ${{ github.event.release.tag_name || github.event.inputs.tag_name }}";
             const tag = (github.event_name == 'release' ? github.event.release.tag_name :context.payload.inputs.tag_name);
-            const appName = tag.replace('app-', '');
             const version = tag.match(/v\d+\.\d+\.\d+(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?:\+[0-9A-Za-z-]+)?$/)[0];
+            const appName = tag.replace('app-', '').replace(`-${version}`, '');
             const releaseUrl = (github.event_name == 'release' ? github.event.release.html_url : context.payload.inputs.release_url);
             const releaseCreator = context.payload.release?.author?.login;
             const issueTitle = `Issue created after release of ${appName} with version ${version}`;
