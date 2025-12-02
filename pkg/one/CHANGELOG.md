@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/tjololo/hello-release-please/compare/app-one-v1.3.0...app-one-v1.3.1) (2025-12-02)
+
+
+### Bug Fixes
+
+* Update source.txt ([850c108](https://github.com/tjololo/hello-release-please/commit/850c108d18c9bf807745411c33daa7898501a0ca))
+
 ## [1.3.0](https://github.com/tjololo/hello-release-please/compare/app-one-v1.2.9...app-one-v1.3.0) (2025-11-28)
 
 
