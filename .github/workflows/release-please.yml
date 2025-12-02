@@ -36,9 +36,11 @@ jobs:
       - id: trigger-post-release-workflows
         name: Map release info to JSON array
         uses: actions/github-script@v7
+        env:
+          RELEASE_INFO: ${{ needs.release-please.outputs.release_info }}
         with:
           script: |
-            const release_info = ${{ needs.release-please.outputs.release_info }};
+            const release_info = JSON.parse(process.env.RELEASE_INFO);
             console.log(JSON.stringify(release_info));
             const paths = JSON.parse(release_info.paths_released);
             console.log(JSON.stringify(paths));
