@@ -43,19 +43,21 @@ jobs:
             const paths = JSON.parse(release_info.paths_released);
             console.log(JSON.stringify(paths));
             for (const path of paths) {
-              console.log(path);
-              const tag_name = release_info[path + '--tag_name'];
-              const release_url = release_info[path + '--html_url'];
-              const sha = release_info[path + '--sha'];
-              await github.request('POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches', {
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                workflow_id: 'post-release-workflow.yaml',
-                ref: tag_name,
-                inputs: {
-                  tag_name: tag_name,
-                  release_url: release_url,
-                  release_sha: sha
-                }
-              });
+              if (path.startsWith("pkg/")) {
+                console.log(path);
+                const tag_name = release_info[path + '--tag_name'];
+                const release_url = release_info[path + '--html_url'];
+                const sha = release_info[path + '--sha'];
+                await github.request('POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches', {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  workflow_id: 'post-release-workflow.yaml',
+                  ref: tag_name,
+                  inputs: {
+                    tag_name: tag_name,
+                    release_url: release_url,
+                    release_sha: sha
+                  }
+                });
+              }
             }
