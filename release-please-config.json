@@ -35,7 +35,7 @@
   "tag-separator": "-",
   "changelog-sections": [
     {"type": "feat", "hidden": false, "section": "Features"},
-    {"type": "fix", "hidden": true, "section": "Bug Fixes"},
+    {"type": "fix", "hidden": false, "section": "Bug Fixes"},
     {"type": "deps", "hidden": true, "section": "Dependency Updates"},
     {"type": "chore", "hidden": false, "section": "Chores"}
   ],
