@@ -37,7 +37,7 @@
     {"type": "feat", "hidden": false, "section": "Features"},
     {"type": "fix", "hidden": false, "section": "Bug Fixes"},
     {"type": "deps", "hidden": true, "section": "Dependency Updates"},
-    {"type": "chore", "hidden": true, "section": "Chores"}
+    {"type": "chore", "hidden": false, "section": "Chores"}
   ],
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
 }
