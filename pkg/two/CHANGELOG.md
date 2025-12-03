@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/tjololo/hello-release-please/compare/app-two-v1.1.3...app-two-v1.1.4) (2025-12-03)
+
+
+### Chores
+
+* Update source.txt ([712fab3](https://github.com/tjololo/hello-release-please/commit/712fab3f454f916ea94305a699d4cd0eacc2b76d))
+
 ## [1.1.3](https://github.com/tjololo/hello-release-please/compare/app-two-v1.1.2...app-two-v1.1.3) (2025-12-02)
 
 
