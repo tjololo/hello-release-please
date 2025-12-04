@@ -29,6 +29,16 @@
       "prerelease": false,
       "component": "app-three",
       "include-component-in-tag": true
+    },
+    "pkg/go": {
+      "changelog-path": "CHANGELOG.md",
+      "release-type": "go",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": false,
+      "component": "app-go",
+      "include-component-in-tag": true
     }
   },
   "separate-pull-requests": true,
