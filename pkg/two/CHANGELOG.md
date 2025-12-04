@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/tjololo/hello-release-please/compare/app-two-v1.1.3...app-two-v1.1.4) (2025-12-04)
+
+
+### Bug Fixes
+
+* Update source.txt ([6819b91](https://github.com/tjololo/hello-release-please/commit/6819b91f0fe321c05bd12c148a5cfe2556fb5634))
+
 ## [1.1.3](https://github.com/tjololo/hello-release-please/compare/app-two-v1.1.2...app-two-v1.1.3) (2025-12-02)
 
 
