@@ -1,47 +1,29 @@
 {
   "packages": {
     "pkg/one": {
-      "changelog-path": "CHANGELOG.md",
       "release-type": "simple",
-      "bump-minor-pre-major": true,
-      "bump-patch-for-minor-pre-major": false,
-      "draft": false,
-      "prerelease": false,
-      "component": "app-one",
-      "include-component-in-tag": true
+      "component": "app-one"
     },
     "pkg/two": {
-      "changelog-path": "CHANGELOG.md",
       "release-type": "simple",
-      "bump-minor-pre-major": true,
-      "bump-patch-for-minor-pre-major": false,
-      "draft": false,
-      "prerelease": false,
-      "component": "app-two",
-      "include-component-in-tag": true
+      "component": "app-two"
     },
     "pkg/three": {
-      "changelog-path": "CHANGELOG.md",
       "release-type": "simple",
-      "bump-minor-pre-major": true,
-      "bump-patch-for-minor-pre-major": false,
-      "draft": false,
-      "prerelease": false,
-      "component": "app-three",
-      "include-component-in-tag": true
+      "component": "app-three"
     },
     "pkg/go": {
-      "changelog-path": "CHANGELOG.md",
       "release-type": "go",
-      "bump-minor-pre-major": true,
-      "bump-patch-for-minor-pre-major": false,
-      "draft": false,
-      "prerelease": false,
-      "component": "app-go",
-      "include-component-in-tag": true
+      "component": "app-go"
     }
   },
   "separate-pull-requests": true,
+  "changelog-path": "CHANGELOG.md",
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": false,
+  "draft": false,
+  "prerelease": false,
+  "include-component-in-tag": true,
   "tag-separator": "-",
   "changelog-sections": [
     {"type": "feat", "hidden": false, "section": "Features"},
