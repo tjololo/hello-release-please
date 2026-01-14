@@ -1,0 +1,25 @@
+name: Do some stuff after a tag is created
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - app-*
+  workflow_dispatch: {}
+
+jobs:
+  echo-tag:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, format('refs/tags/{0}', 'app-'))
+    steps:
+      - name: Echo tag
+        run: |
+          tag=${GITHUB_REF/refs\/tags\//}
+          echo ${tag}
+  echo-branch:
+    runs-on: ubuntu-latest
+    if: ${{ !startsWith(github.ref, format('refs/tags/{0}', 'app-')) }}
+    steps:
+      - name: Echo ref
+        run: echo ${{ github.ref }}
